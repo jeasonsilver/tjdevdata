@@ -1,0 +1,543 @@
+@charset "utf-8";
+/* 登录后页面整体布局样式 */
+
+* {
+	margin:0;
+	padding:0;
+	font-family: "微软雅黑";
+}
+ul {
+	list-style:none;
+}
+body, html {
+	height:100%;
+}
+.header {
+	width:100%;
+	height:61px;
+	background:#ff0000 url(../images/header/pic.png) no-repeat right;
+}
+.nav {/*_______________________nav导航样式___________________________*/
+	width:100%;
+	height:29px;
+	background:url(../images/nav/bg.jpg) repeat-x;
+}
+.nav_but {/*导航按钮样式*/
+	display:inline-block;
+	width:116px;
+	height:29px;
+	color:#F00;
+	background:url(../images/nav/but_bg_a.jpg) no-repeat;
+	font-size:15px;
+	font-weight:bold;
+	letter-spacing:2px;
+	line-height:28px;
+	text-decoration:none;
+	text-indent:24px;
+}
+.nav_but:hover {
+	color:#FFF;
+	background:url(../images/nav/but_bg_hover.jpg) no-repeat;
+}
+.nav_rig {
+	width:330px;
+	height:29px;
+	float:right;
+}
+.text_grey {/*登录欢迎文字样式*/
+	font-size:14px;
+	color:#666;
+	letter-spacing:1px;
+	line-height:28px;
+	float:left;
+}
+.ico_01 {/*小房子*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_01.png) no-repeat center;
+	float:left;
+}
+.ico_02 {/*帮助*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_02.png) no-repeat center;
+	float:left;
+}
+.ico_03 {/*人*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_03.png) no-repeat center;
+	float:left;
+}
+.ico_04 {/*退出*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_04.png) no-repeat center;
+	float:left;
+}/*_______________________nav导航样式结束___________________________*/
+.cen {/*_______________________中间内容样式___________________________*/
+	width:100%;
+	margin:5px 0 0 0;
+}
+.lef {/*_______________________中间左侧导航样式___________________________*/
+	width:208px;
+	background: url(../images/cen/left/bg.jpg) repeat-y;
+	float:left;
+}
+.lef ul {/*大会堂背景*/
+	width:208px;
+	background:url(../images/cen/left/bg_pic.png) no-repeat bottom left;
+}
+.lef_header {/*标题文字样式*/
+	width:280px;
+	height:31px;
+	background:url(../images/cen/left/header_bg.jpg) no-repeat;
+	font-size:16px;
+	color:#FF0;
+	font-weight:bold;
+	line-height:29px;
+	letter-spacing:3px;
+	text-indent:64px;
+}
+.lef_but {/*整体导航按钮内容布局样式*/
+	width:280px;
+	height:600px;
+	padding:5px 0 0 0;
+	background:url(../images/cen/left/but_bg.png) no-repeat;
+}
+.lef_but_01 {/*一级导航按钮*/
+	display:block;
+	width:182px;
+	height:33px;
+	background: url(../images/cen/left/but_bg_a.png) no-repeat right;
+	font-size:14px;
+	letter-spacing:1px;
+	color:#333;
+	text-decoration:none;
+	line-height:33px;
+	text-indent:60px;
+	font-weight:bold;
+}
+.lef_but_01:hover {
+	background:url(../images/cen/left/but_bg_hover.png) no-repeat right;
+}
+.lef_but_02 {/*二级导航按钮样式*/
+	display:block;
+	width:200px;
+	height:26px;
+	background: url(../images/cen/left/but_bg02_a.png) no-repeat left;
+	font-size:14px;
+	letter-spacing:1px;
+	color: #FF0;
+	text-decoration:none;
+	line-height:26px;
+	text-indent:60px;
+	font-weight:bold;
+}
+.lef_but_02:hover {
+	text-decoration:underline;
+}/*_______________________中间左侧导航样式结束___________________________*/
+.rig {/*_______________________中间右侧样式___________________________*/
+	margin-left:230px;
+}
+.rig ul {
+	width:98%;
+}
+.tab {/*_______________________table样式___________________________*/
+	text-transform:capitalize;
+	border-collapse: collapse;
+	width:100%;
+}
+.tab td {
+	border:1px solid #b8b8b8;
+}
+.tab_grey_header {/*标题行的样式*/
+	height:31px;
+	background:url(../images/cen/rig/tab_bg_header.jpg) repeat-x;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	letter-spacing:1px;
+	color:#900;
+}
+.tab_grey {/*table展示数据列表样式――灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_grey:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_grey02 {/*table查询列表样式――灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}
+.tab_white {/*table展示数据列表样式――白色背景*/
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_white:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_white02 {/*table查询列表样式――白色背景*/
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}
+.but_homepage {/*首页按钮样式*/
+	display:inline-block;
+	margin:0 3px;
+	width:69px;
+	height:32px;
+	background:url(../images/cen/rig/but_homepage_a.png) no-repeat bottom;
+	font-family:"宋体";
+	font-size:12px;
+	text-decoration:none;
+	line-height:32px;
+	text-indent:13px;
+	color:#333;
+}
+.but_homepage:hover {
+	background:url(../images/cen/rig/but_homepage_hover.png) no-repeat bottom;
+	color:#FFF;
+}
+.but_endpage {/*尾页按钮样式*/
+	display:inline-block;
+	margin:0 3px;
+	width:69px;
+	height:32px;
+	background:url(../images/cen/rig/but_endpage_a.png) no-repeat bottom;
+	font-family:"宋体";
+	font-size:12px;
+	text-decoration:none;
+	line-height:32px;
+	text-indent:-8px;
+	color:#333;
+}
+.but_endpage:hover {
+	background:url(../images/cen/rig/but_endpage_hover.png) no-repeat bottom;
+	color:#FFF;
+}
+.but_pageup {/*上一页按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_pageup_a.png) no-repeat;
+}
+.but_pageup:hover {
+	background:url(../images/cen/rig/but_pageup_hover.png) no-repeat;
+}
+.but_pagedown {/*下一页按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_pagedown_a.png) no-repeat;
+}
+.but_pagedown:hover {
+	background:url(../images/cen/rig/but_pagedown_hover.png) no-repeat;
+}
+.but_page {/*页码按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	font-size:12px;
+	line-height:30px;
+	color:#333;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_page_a.png) no-repeat;
+}
+.but_page:hover {
+	background:url(../images/cen/rig/but_page_hover.png) no-repeat;
+	color:#FFF;
+}
+.but_text {/*跳转到文本输入框样式*/
+	width:65px;
+	height:30px;
+	background: url(../images/cen/rig/but_text_bg.png) no-repeat bottom;
+	border:0;
+	text-indent:15px;
+	line-height:33px;
+	font-size:12px;
+	color: #333;
+}
+.but_go {/*Go按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:33px;
+	height:30px;
+	background:url(../images/cen/rig/but_go_a.png) no-repeat;
+	font-size:12px;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+	line-height:30px;
+}
+.but_go:hover {
+	background:url(../images/cen/rig/but_go_hover.png) no-repeat;
+}
+.rig_nav {/*_________________中间右侧导航按钮样式_____________________*/
+	margin:0 auto;
+}
+.rig_nav_01 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg01_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_01:hover {
+	background:url(../images/cen/rig_but/but_bg01_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_02 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg02_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_02:hover {
+	background:url(../images/cen/rig_but/but_bg02_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_03 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg03_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_03:hover {
+	background:url(../images/cen/rig_but/but_bg03_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_04 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg04_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_04:hover {
+	background:url(../images/cen/rig_but/but_bg04_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_05 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg05_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_05:hover {
+	background:url(../images/cen/rig_but/but_bg05_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_06 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg06_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_06:hover {
+	background:url(../images/cen/rig_but/but_bg06_hov.png) no-repeat;
+	color:#FF0;
+}
+.rig_nav_07 {
+	display:inline-block;
+	width:221px;
+	height:170px;
+	background:url(../images/cen/rig_but/but_bg07_a.png) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+	line-height:300px;
+	letter-spacing:2px;
+	font-weight:bold;
+}
+.rig_nav_07:hover {
+	background:url(../images/cen/rig_but/but_bg07_hov.png) no-repeat;
+	color:#FF0;
+}
+.procedure_header {/*______________中间右侧"申报流程"样式______________*/
+	margin:0 auto;
+	width:879px;
+	height:59px;
+	background: url(../images/cen/rig/procedure/header.jpg) no-repeat;
+}
+.procedure_cen {
+	margin:0 auto;
+	padding-top:290px;
+	width:875px;
+	height:100%;
+	background:#f9f9fb url(../images/cen/rig/procedure/procedure_pic01.jpg) no-repeat top center;
+	border-right:2px solid #d6d7db;
+	border-left:2px solid #d6d7db;
+}
+.procedure_text01 {
+	font-family:"微软雅黑";
+	font-size:20px;
+	font-weight:bold;
+	color:#333;
+	text-align:center;
+	line-height:40px;
+	letter-spacing:1px;
+}
+.procedure_text02 {
+	font-family:"微软雅黑";
+	font-size:14px;
+	color:#333;
+	text-align:center;
+	line-height:40px;
+	letter-spacing:1px;
+}
+.procedure_part01 {
+	margin:0 2px;
+	height:34px;
+	border-top:1px solid #ababab;
+	border-bottom:1px solid #ababab;
+	background:#FF0 url(../images/cen/rig/procedure/red_bg.png) no-repeat left;
+	font-family:"微软雅黑";
+	font-size:16px;
+	font-weight:bold;
+	line-height:34px;
+	letter-spacing:1px;
+	color:#FFF;
+	text-indent:10px;
+}
+.procedure_part01_cen{ margin:0 12px; padding-top:8px; font-family:"微软雅黑"; font-size:14px; letter-spacing:1px; line-height:35px;}
+.procedure_footer {
+	margin:0 auto;
+	width:879px;
+	height:36px;
+	background: url(../images/cen/rig/procedure/footer.jpg) no-repeat top;
+} /*___________________中间右侧“申报流程”样式结束_______________________*/
+/*_______________________中间右侧样式结束___________________________*/
+/*_______________________中间内容样式结束___________________________*/
+.footer {/*_______________________底部版权样式___________________________*/
+	width:100%;
+	height:28px;
+	background:url(../images/footer/bg.jpg) repeat-x;
+	font-family:"宋体";
+	font-size:12px;
+	text-align:center;
+	color: #666;
+	line-height:28px;
+	float:left;
+}/*_______________________底部版权样式结束___________________________*/
+.text_white16 {/*_________________文本样式_____________________*/
+	font-size:16px;
+	letter-spacing:2px;
+	color:#FFF;
+	font-weight:bold;
+}
+.text_grey14 {
+	font-size:14px;
+	letter-spacing:1px;
+	color: #333;
+}
+.text_red14 {
+	font-size:14px;
+	letter-spacing:1px;
+	color: #F00;
+}
+.text_box {
+	height:20px;
+	border-top:1px solid #999;
+	border-right:1px solid #999;
+	border-bottom:1px solid #CCC;
+	border-left:1px solid #CCC;
+	text-indent:5px;
+	color: #900;
+	background:#FFF;
+}
+.text_link_grey {
+	font-size:14px;
+	letter-spacing:1px;
+	color: #333; text-decoration:none;
+}
+.text_link_grey:hover{ color:#F00; text-decoration:underline;}
+.red_but {
+	display: inline-block;
+	margin:5px 30px 5px 0;
+	width:71px;
+	height:29px;
+	background:url(../images/cen/rig/search_but_a.png) no-repeat;
+	font-size:16px;
+	line-height:29px;
+	text-decoration:none;
+	letter-spacing:2px;
+	text-indent:18px;
+	color:#FFF;
+	font-weight:bold;
+	float:right;
+}
+.red_but:hover {
+	background:url(../images/cen/rig/search_but_hover.png) no-repeat;
+}
+/*_________________文本样式结束_____________________*/

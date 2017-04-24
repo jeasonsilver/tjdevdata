@@ -1,0 +1,240 @@
+/*----------左侧菜单导航区域样式----------*/
+*{
+    margin:0px;
+	padding:0px;
+	}
+html {
+	background: #fff;
+	height: 100%;
+}
+body {
+	background: #fff;
+	font-family: "宋体";
+	font-size: 12px;
+	height: 100%;
+}
+#left_cd {
+	width: 189px;
+	height: 100%;
+	text-align: center;
+	background-image: url(images/leftcd_bj.jpg);
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-color: #f4c2a2;
+	top: 0px;
+	bottom: 0px;
+	position: absolute;
+	overflow: auto;
+}
+#left_cd ul {
+	list-style-type: none;
+}
+#left_cd li {
+	margin-bottom: 8px;
+}
+#left_cd a {
+	background-image: url(images/btn_bj.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 28px;
+	width: 147px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 26px;
+	font-family: "宋体";
+	font-weight: normal;
+	color: #CC3333;
+	text-decoration: none;
+	font-size: 13px;
+	cursor: pointer;
+}
+#left_cd a:hover {
+	font-family: "宋体";
+	font-weight: normal;
+	text-decoration: none;
+	font-size: 13px;
+}
+#left_cd a.b2 {
+	background-image: url(images/btn_bj2.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 28px;
+	width: 131px;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	line-height: 26px;
+	font-family: "宋体";
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+	font-size: 13px;
+}
+#left_cd .input {
+	height: 28px;
+	width: 147px;
+	font-family: "宋体";
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: normal;
+	color: #C33;
+	background-image: url(images/btn_bj.jpg);
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	cursor: pointer;
+}
+#left_cd .input:hover {
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	color: #C33;
+}
+#left_cd ul li ul li a {
+	background-image: url(images/leftdh_bj2.jpg);
+	height: 25px;
+	line-height: 25px;
+	padding: 0px;
+	display: block;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: 40px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	width: 118px;
+	color: #000;
+	background-repeat: no-repeat;
+	background-position: 0px;
+	text-indent: 18px;
+	background-color: #faebd7;
+	text-align: center;
+}
+#left_cd ul li ul li{
+	margin: 0px;
+	padding: 0px;
+}
+#left_cd ul .rjcd a {
+	background-image: url(images/dcd_bj2.jpg);
+	height: 32px;
+	line-height: 32px;
+	padding: 0px;
+	display: block;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	width: 189px;
+	color: #000;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-indent: 20px;
+	text-align: left;
+	background-color: #F4C2A2;
+}
+#left_cd ul .rjcd ul li a {
+	background-image: url(images/dcd_bj3.jpg);
+	height: 32px;
+	line-height: 32px;
+	padding: 0px;
+	display: block;
+	margin-top: 0px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	width: 189px;
+	color: #000;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: left;
+	background-color: #F4C2A2;
+	text-indent: 30px;
+}
+#left_cd ul .rjcd ul li {
+	margin: 0px;
+	padding: 0px;
+}
+#left_cd ul .rjcd p {
+	height: 32px;
+	line-height: 32px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #FFFFFF;
+	border-right-color: #EA8A4A;
+	border-bottom-color: #555555;
+	border-left-color: #EA8A4A;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: normal;
+	background-image: url(images/dcd_bj2.jpg);
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 20px;
+	color: #000;
+	overflow: hidden;
+	margin: 0px;
+	padding: 0px;
+}
+#left_cd ul li ul li a:hover{
+	font-size: 12px;
+	background-color: #FFC;
+	background-repeat: no-repeat;
+	}
+#left_cd ul li ul li {
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 7px;
+	margin-left: 0px;
+}
+#left_cd ul li ul {
+	margin-top: 5px;
+}
+#left_cd ul li p {
+	height: 31px;
+	line-height: 32px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-color: #FFFFFF;
+	border-right-color: #EA8A4A;
+	border-bottom-color: #555555;
+	border-left-color: #EA8A4A;
+	font-family: "宋体";
+	font-size: 13px;
+	font-weight: bold;
+	background-image: url(images/dcd_bj.jpg);
+	background-repeat: no-repeat;
+	text-align: left;
+	text-indent: 50px;
+	color: #000;
+	overflow: hidden;
+}
+ 
+#left_cd ul li ul li .btn3 {
+	width: 173px;
+	margin-left: 8px;
+	background-image: url(images/leftdh_bj3.jpg);
+	letter-spacing: 0em;
+	word-spacing: 0em;
+	font-family: "宋体";
+	font-size: 12px;
+	text-indent: 0;
+}
+ 

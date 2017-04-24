@@ -1,0 +1,107 @@
+/**
+body {    
+            margin:0 200px;  
+        }   
+        table {  
+            border: 1px solid #B1CDE3;  
+            padding:0;   
+            margin:0 auto;  
+            border-collapse: collapse;  
+        }  
+          
+        td {  
+            border: 1px solid #B1CDE3;  
+            background: #fff;  
+            font-size:14px;  
+            padding: 3px 3px 3px 8px;  
+            color: #4f6b72;  
+        }  
+        .table_left{
+        	width:20%
+        }
+        
+        .table_right{
+        	width:80%
+        }
+**/
+.tab {/*_______________________table样式___________________________*/
+	text-transform:capitalize;
+	border-collapse: collapse;
+	width:100%;
+}
+.tab_pag {
+	text-transform:capitalize;
+	border-collapse: collapse;
+	width:80%;
+}
+.tab td {
+	border:1px solid #b8b8b8;
+}
+.tab_pag td {
+	border:1px solid #b8b8b8;
+}
+.tab_grey_header {/*标题行的样式*/
+	height:31px;
+	background:url(../images/cen/rig/tab_bg_header.jpg) repeat-x;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	letter-spacing:1px;
+	color:#900;
+}
+.tab_grey {/*table展示数据列表样式——灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_grey:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_grey02 {/*table查询列表样式——灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}
+.tab_grey03 {/*弹出页面table样式——灰色背景*/
+	height:30px;
+	background:#efefef; padding:10px;
+	font-size:18px;
+	font-family: 仿宋,仿宋_GB2312;
+	letter-spacing:1px;
+	line-height:200%;
+	border-bottom:3px solid  #b8b8b8;
+}
+
+.tab_grey03 p{
+	font-size:18px;
+	font-family: 仿宋,仿宋_GB2312;
+}
+.tab_white {/*table展示数据列表样式——白色背景*/
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_white:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_white02 {/*table查询列表样式——白色背景*/
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}

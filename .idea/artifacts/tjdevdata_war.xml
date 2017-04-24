@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tjdevdata:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="tjdevdata.war">
+      <element id="artifact" artifact-name="tjdevdata:war exploded" />
+    </root>
+  </artifact>
+</component>

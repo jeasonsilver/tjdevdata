@@ -1,0 +1,58 @@
+.dialog-overlay {
+	BACKGROUND: gray;
+	FILTER: alpha(opacity : 50); 
+	opacity: 0.3
+}
+
+.dialog {
+	BACKGROUND: gray;
+	FILTER: alpha(opacity : 70);
+	PADDING: 5px;
+	opacity: 1;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px
+}
+
+.dialog .bar {
+	PADDING-RIGHT: 6px;
+	PADDING-LEFT: 6px;
+	MIN-HEIGHT: 15px;
+	BACKGROUND: #6ABDE0;
+	PADDING-BOTTOM: 6px;
+	CURSOR: move;
+	COLOR: #000;
+	PADDING-TOP: 6px
+}
+
+.dialog .bar .title {
+	font-size: 16px;
+	color: white;
+	FLOAT: left;
+	MARGIN-RIGHT: 10px
+}
+
+.dialog .bar .close {
+	FLOAT: right;
+	CURSOR: pointer;
+	font-size: 30px;
+}
+
+.dialog .content {
+	PADDING-RIGHT: 10px;
+	PADDING-LEFT: 10px;
+	BACKGROUND: #fff;
+	PADDING-BOTTOM: 10px;
+	PADDING-TOP: 10px
+}
+
+.dialog IFRAME {
+	WIDTH: 100%;
+	HEIGHT: 100%
+}
+
+.content IMG {
+	MAX-WIDTH: 700px;
+	OVERFLOW: auto;
+	MAX-HEIGHT: 500px
+}

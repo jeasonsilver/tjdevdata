@@ -1,0 +1,567 @@
+@charset "utf-8";
+/* 登录后页面整体布局样式 */
+* {
+	margin:0;
+	padding:0;
+	font-family: "微软雅黑";
+}
+dd {
+    margin:0;
+}
+ul {
+	list-style:none;
+}
+body, html {
+	height:100%;
+}
+.header {
+	width:100%;
+	height:61px;
+	background:url(../images/header/header_bg.jpg);
+}
+/*.logo{ width:100%; height:61px; background:url(../images/header/logo.png) no-repeat;}*/
+.logo{ width:100%; height:61px; background:url(../images/header/logo.png) no-repeat;;}
+.red{ color:#F00;}
+.nav {/*_______________________nav导航样式___________________________*/
+	width:100%;
+	height:29px;
+	background:url(../images/nav/bg.jpg) repeat-x;
+	margin:0px;
+}
+.nav_but {/*导航按钮样式*/
+	display:inline-block;
+	width:120px;
+	height:29px;
+	color:#0148ab;
+	background:url(../images/nav/but_bg_a.jpg) no-repeat;
+	font-size:15px;
+	font-weight:bold;
+	letter-spacing:2px;
+	line-height:28px;
+	text-decoration:none;
+	/*text-indent: 24px; */
+    text-align: center;
+}
+.nav_but:hover {
+	color:#FFF;
+	background:url(../images/nav/but_bg_hover.jpg) no-repeat;
+	text-decoration:none;
+}
+.nav_but_clicked {
+	color:#FFF;
+	background:url(../images/nav/but_bg_hover.jpg) no-repeat;
+	text-decoration:none;
+}
+.nav_rig {
+	width:525px;
+	height:29px;
+	float:right;
+}
+.text_grey {/*登录欢迎文字样式*/
+	font-size:14px;
+	color:#666;
+	letter-spacing:1px;
+	line-height:28px;
+	float:left;
+}
+.ico_01 {/*小房子*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_01.png) no-repeat center;
+	float:left;
+}
+.ico_02 {/*帮助*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_02.png) no-repeat center;
+	float:left;
+}
+.ico_03 {/*人*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_03.png) no-repeat center;
+	float:left;
+}
+.ico_04 {/*退出*/
+	display:inline-block;
+	width:40px;
+	height:28px;
+	background:url(../images/nav/ico_04.png) no-repeat center;
+	float:left;
+}/*_______________________nav导航样式结束___________________________*/
+.cen {/*_______________________中间内容样式___________________________*/
+	width:100%;
+	margin:5px 0 0 0;
+}
+.lef {/*_______________________中间左侧导航样式___________________________*/
+	width:240px;
+	background: url(../images/cen/left/bg.jpg) repeat-y;
+	float:left;
+	
+	OVERFLOW-Y: auto; OVERFLOW-X:hidden;
+}
+.lef ul {/*大会堂背景*/
+	width:208px;
+	/*background:url(../images/cen/left/bg_pic.png) no-repeat bottom left;*/
+	margin:0px;
+}
+.lef_header {/*标题文字样式*/
+	width:240px;
+	height:31px;
+	background:url(../images/cen/left/header_bg.jpg) no-repeat;
+	font-size:16px;
+	color:#FFF;
+	font-weight:bold;
+	line-height:29px;
+	letter-spacing:3px;
+	text-indent:65px;
+}
+.lef_but {/*整体导航按钮内容布局样式*/
+	width:280px;
+	
+	padding:5px 0 0 0;
+	background:url(../images/cen/left/but_bg.png) no-repeat;
+}
+.lef_but_01 {/*一级导航按钮*/
+	display:block;
+	width:210px;
+	height:33px;
+	background: url(../images/cen/left/but_bg_a.png) no-repeat right;
+	font-size:14px;
+	letter-spacing:1px;
+	color:#333;
+	text-decoration:none;
+	line-height:33px;
+	text-indent:45px;
+	font-weight:bold;
+}
+.lef_but_01:hover {
+	background:url(../images/cen/left/but_bg_hover.png) no-repeat right;
+	/* color:#000; */
+	
+}
+.lef_but_02 {/*二级导航按钮样式*/
+	display:block;
+	width:200px;
+	/*height:26px;*/
+	background: url(../images/cen/left/but_bg02_a.png) no-repeat left;
+	font-size:14px;
+	letter-spacing:1px;
+	color:#333;
+	text-decoration:none;
+	line-height:26px;
+	text-indent:60px;
+	font-weight:bold;
+	overflow: hidden;
+}
+.lef_but_03 {/*二级导航按钮样式*/
+	display:block;
+	width:200px;
+	/*height:26px;*/
+	background: url(../images/cen/left/but_bg03_a.png) no-repeat left;
+	font-size:14px;
+	letter-spacing:1px;
+	color:#333;
+	text-decoration:none;
+	line-height:26px;
+	text-indent:30px;
+	font-weight:bold;
+	overflow: hidden;
+}
+
+.lef_but_02_click {
+	text-decoration:underline;
+	text-decoration:none;
+	/* color:#FFF; */
+}
+/*_______________________中间左侧导航样式结束___________________________*/
+.rig {/*_______________________中间右侧样式___________________________*/
+	margin-left:240px;
+}
+.rig ul {
+	width:98%;
+}
+.tab {/*_______________________table样式___________________________*/
+	border-collapse: collapse;
+	width:99%;
+	margin-bottom: 10px;
+}
+.tab_pag {
+	text-transform:capitalize;
+	border-collapse: collapse;
+}
+.tab td {
+	border:1px solid #b8b8b8;
+}
+.tab_pag td {
+	border:1px solid #b8b8b8;
+}
+.tab th {
+	border:1px solid #b8b8b8;
+}
+.tab_grey_header {/*标题行的样式*/
+	height:31px;
+	background:url(../images/cen/rig/tab_bg_header.jpg) repeat-x;
+	font-size:14px;
+	font-weight:bold;
+	text-align:center;
+	letter-spacing:1px;
+	color:#900;
+}
+.tab_grey {/*table展示数据列表样式――灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_grey:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_grey02 {/*table查询列表样式――灰色背景*/
+	height:30px;
+	background:#efefef;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}
+.tab_white {/*table展示数据列表样式――白色背景*/
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	text-align:center;
+	line-height:30px;
+}
+.tab_white:hover {
+	background:#900;
+	color:#FFF;
+	font-weight:bold;
+}
+.tab_white02 {/*table查询列表样式――白色背景*/
+	height:40px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+}
+.tab_white03 {/*弹出页面table样式——白色背景*/
+	height:30px;
+	background:#FFF;
+	padding:10px;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	text-indent:10px;
+	border-bottom:3px solid  #b8b8b8;
+}
+.freeGrid_firstPage {/*首页按钮样式*/
+	display:inline-block;
+	margin:0 3px;
+	width:69px;
+	height:32px;
+	background:url(../images/cen/rig/but_homepage_a.png) no-repeat bottom;
+	font-family:"宋体";
+	font-size:12px;
+	text-decoration:none;
+	line-height:32px;
+	text-indent:13px;
+	color:#333;
+	cursor:pointer;
+}
+.freeGrid_firstPage:hover {
+	background:url(../images/cen/rig/but_homepage_hover.png) no-repeat bottom;
+	color:#FFF;
+}
+.freeGrid_firstPage_disable {
+	background:url(../images/cen/rig/but_homepage_no.png) no-repeat bottom;
+}
+.freeGrid_firstPage_disable:hover {
+	background:url(../images/cen/rig/but_homepage_no.png) no-repeat bottom;
+	color:#333;
+}
+.freeGrid_lastPage {/*尾页按钮样式*/
+	display:inline-block;
+	margin:0 3px;
+	width:69px;
+	height:32px;
+	background:url(../images/cen/rig/but_endpage_a.png) no-repeat bottom;
+	font-family:"宋体";
+	font-size:12px;
+	text-decoration:none;
+	line-height:32px;
+	text-indent:-8px;
+	color:#333;
+	cursor:pointer;
+}
+.freeGrid_lastPage:hover {
+	background:url(../images/cen/rig/but_endpage_hover.png) no-repeat bottom;
+	color:#FFF;
+}
+.freeGrid_lastPage_disable {
+	background:url(../images/cen/rig/but_endpage_no.png) no-repeat bottom;
+}
+.freeGrid_lastPage_disable:hover {
+	background:url(../images/cen/rig/but_endpage_no.png) no-repeat bottom;
+	color:#333;
+}
+.freeGrid_prePage {/*上一页按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_pageup_a.png) no-repeat;
+	cursor:pointer;
+}
+.freeGrid_prePage:hover {
+	background:url(../images/cen/rig/but_pageup_hover.png) no-repeat;
+}
+
+.freeGrid_prePage_disable {
+	background:url(../images/cen/rig/but_pageup_no.png) no-repeat bottom;
+}
+.freeGrid_prePage_disable:hover {
+	background:url(../images/cen/rig/but_pageup_no.png) no-repeat bottom;
+	color:#333;
+}
+.freeGrid_nextPage {/*下一页按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_pagedown_a.png) no-repeat;
+	cursor:pointer;
+}
+.freeGrid_nextPage:hover {
+	background:url(../images/cen/rig/but_pagedown_hover.png) no-repeat;
+}
+.freeGrid_nextPage_disable {
+	background:url(../images/cen/rig/but_pagedown_no.png) no-repeat bottom;
+}
+.freeGrid_nextPage_disable:hover {
+	background:url(../images/cen/rig/but_pagedown_no.png) no-repeat bottom;
+	color:#333;
+}
+.freeGrid_page {/*页码按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:30px;
+	height:30px;
+	font-size:12px;
+	line-height:30px;
+	color:#333;
+	text-decoration:none;
+	background: url(../images/cen/rig/but_page_a.png) no-repeat;
+	cursor:pointer;
+}
+.freeGrid_page:hover {
+	background:url(../images/cen/rig/but_page_hover.png) no-repeat;
+	color:#FFF;
+}
+.but_text {/*跳转到文本输入框样式*/
+	width:65px;
+	height:30px;
+	background: url(../images/cen/rig/but_text_bg.png) no-repeat bottom;
+	border:0;
+	text-indent:15px;
+	line-height:33px;
+	font-size:12px;
+	color: #333;
+}
+.but_go {/*Go按钮样式*/
+	display: inline-block;
+	margin: 0 3px;
+	width:33px;
+	height:30px;
+	background:url(../images/cen/rig/but_go_a.png) no-repeat;
+	font-size:12px;
+	color:#FFF;
+	font-weight:bold;
+	text-decoration:none;
+	line-height:30px;
+}
+.but_go:hover {
+	background:url(../images/cen/rig/but_go_hover.png) no-repeat;
+}/*_______________________中间右侧样式结束___________________________*/
+/*_______________________中间内容样式结束___________________________*/
+.footer {/*_______________________底部版权样式___________________________*/
+	width:100%;
+	height:28px;
+	background:url(../images/footer/bg.jpg) repeat-x;
+	font-family:"宋体";
+	font-size:12px;
+	text-align:center;
+	color: #666;
+	line-height:28px;
+	float:left;
+}/*_______________________底部版权样式结束___________________________*/
+.text_white16 {/*_________________文本样式_____________________*/
+	font-size:14px;
+	letter-spacing:2px;
+	color:#FFF;
+	font-weight:bold;
+}
+.text_grey14 {
+	font-size:14px;
+	letter-spacing:1px;
+	color: #333;
+}
+.text_red14 {
+	font-size:14px;
+	letter-spacing:1px;
+	color: #F00;
+}
+.text_box {
+	height:20px;
+	border-top:1px solid #999;
+	border-right:1px solid #999;
+	border-bottom:1px solid #CCC;
+	border-left:1px solid #CCC;
+	text-indent:5px;
+	color: #900;
+	background:#FFF;
+}
+.red_but {
+	display: inline-block; margin:5px 30px 5px 0;
+	width:71px;
+	height:29px;
+	background:url(../images/cen/rig/search_but_a.png) no-repeat;
+	font-size:16px;
+	line-height:29px;
+	text-decoration:none; letter-spacing:2px; text-indent:18px;
+	color:#FFF;
+	font-weight:bold; float:right;
+}
+.red_but:hover {
+	background:url(../images/cen/rig/search_but_hover.png) no-repeat;
+}
+/*_________________文本样式结束_____________________*/
+
+.tab td {
+	border:1px solid #d6d6d6;
+}
+
+/*_________________input页面用p不要用table_____________________*/
+
+
+.error {
+    color: red;
+}
+
+.tab_01g {/*____________________绿色表格样式_____________________*/
+	text-transform:capitalize;
+	border-collapse: collapse;
+	border:2px solid #096;
+	width:800px;
+}
+.tab_01g tr td { padding:10px;
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	border:1px solid #096;color:#096;
+	font-size:18px;
+	letter-spacing:5px;
+	line-height:30px;
+}
+.tab_01g_header {
+	color:#096;
+	font-size: 26px;
+	letter-spacing:4px;
+	line-height:45px;
+}
+.tab_01g_text01 {
+	color:#096;
+	font-size:18px;
+	letter-spacing:2px;
+	line-height:40px;
+}
+.tab_01g_text02 {
+	color:#096;
+	font-size:14px;
+	letter-spacing:2px;
+	line-height:20px;
+}
+.tab_01g_text03 {
+	color:#096;
+	font-size:16px;
+	letter-spacing:2px;
+	line-height:25px;
+}
+/*____________________绿色表格样式结束_____________________*/
+.tab_02g {/*____________________黑色表格样式_____________________*/
+	text-transform:capitalize;
+	border-collapse: collapse;
+	border:2px solid #333;
+	width:800px;
+}
+.tab_02g tr td { padding:10px;
+	height:30px;
+	background:#FFF;
+	font-size:14px;
+	letter-spacing:1px;
+	line-height:30px;
+	border:1px solid #333;color:#333;
+	font-size:18px;
+	letter-spacing:5px;
+	line-height:30px;
+}
+.tab_02g_header {
+	color:#333;
+	font-size: 26px;
+	letter-spacing:4px;
+	line-height:45px;
+}
+.tab_02g_text01 {
+	color:#333;
+	font-size:18px;
+	letter-spacing:2px;
+	line-height:40px;
+}
+.tab_02g_text02 {
+	color:#333;
+	font-size:14px;
+	letter-spacing:2px;
+	line-height:20px;
+}
+.tab_02g_text03 {
+	color:#333;
+	font-size:16px;
+	letter-spacing:2px;
+	line-height:25px;
+}
+/*____________________黑色表格样式结束_____________________*/
+
+#titleSpan {
+	color:#0148ab;
+	font-size:15px;
+	letter-spacing:1px;
+	line-height:26px;
+	font-weight: 600;
+}
+
+
+/* ___________________index 页 收放button 图片css*/
+.btnimg1
+{
+	width:20px;
+    height:20px;
+    background:url(../images/cen/rig_but/btnimg1.png);  
+}
+.btnimg2
+{ 
+	width:20px;
+    height:20px;
+    background:url(../images/cen/rig_but/btnimg2.png);   
+}

@@ -1,0 +1,68 @@
+/*----------TOP菜单样式----------*/
+body {
+	font-size: 12px;
+	margin: 0px;
+	font-family: "宋体";
+	font-weight: normal;
+	padding: 0px;
+}
+#menu {
+	height: 30px;
+	background-image: url(images/dhcd_bj.jpg);
+	text-align: left;
+	font-family: "宋体";
+	font-size: 12px;
+	background-repeat: repeat-x;
+	overflow: hidden;
+	white-space: nowrap;
+}
+#menu p {
+	line-height: 30px;
+	text-indent: 1em;
+	color: #000000;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	width: 150px;
+	overflow: hidden;
+}
+#menu .dhcd {
+	padding: 0px;
+	height: 30px;
+	text-align: left;
+	margin-right: 0px;
+}
+#menu .dhcd a {
+	display: inline;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	float: left;
+}
+#menu .dhcd .jg {
+	background-image: url(images/dhcd_jg.jpg);
+	width: 2px;
+	display: block;
+	height: 30px;
+}
+.yhxz 
+{
+    background-image: url(images/user_business.png);
+	background-repeat: no-repeat;
+	background-position: 0px 2px;
+	float: left;
+	right: 0px;
+	margin-right: 10px;
+	padding-left:22px;
+	margin-top: 5px;
+	width: 100px;
+}
+.yhxz select {
+	width: 100px;
+	border: 1px none #999;
+	background-color: transparent;
+}
+#menu .dhcd .dh {
+
+
+}

@@ -1,0 +1,548 @@
+package com.free.system.controller;
+
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.nutz.dao.Cnd;
+import org.nutz.dao.sql.Criteria;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.free.dblz.model.Cwhsy;
+import com.free.dblz.model.Lzjycg;
+import com.free.hywj.model.Hywjxx;
+import com.free.system.entity.ModularDetailVO;
+import com.free.system.entity.ModularInfoVO;
+import com.free.system.entity.ModularVO;
+import com.free.system.model.Department;
+import com.free.system.service.DepartmentService;
+import com.free.system.service.ModularService;
+import com.free.xinxizl.model.Dycgjl;
+import com.free.xinxizl.model.Rddtxx;
+import com.free.yajy.model.Dbgz;
+import com.free.zywk.model.Cyflfg;
+import com.free.zywk.model.Zyjhwj;
+
+/**
+ * 模块统计
+ * @ClassName: ModularController 
+ * @Description: TODO
+ * @Company 天津南大通用数据技术股份有限公司
+ * @author 庞 
+ * @date Apr 2, 2015 5:23:24 PM 
+ * @version V1.0
+ *
+ */
+@Controller
+@RequestMapping(value="/system/modular")
+public class ModularController {
+
+	@Resource
+	private DepartmentService deptService;
+	
+	@Resource
+	private ModularService modularService;
+	
+	/**
+	 * 按栏目统计
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("/modular")
+    public ModelAndView modular(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		ModelAndView  modelAndView = new ModelAndView("jsp/system/modular");
+		/*页面展示VO 【表头】*/
+		modelAndView.addObject("modularVOHeadList",getModularTemp());
+		/*页面展示VO 【数据】*/
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		modelAndView.addObject("modularVODataList",getModularData(year));
+		modelAndView.addObject("year",year);
+		return modelAndView;
+	}
+	
+	/**
+	 * 按部门统计
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("/modularDept")
+    public ModelAndView modularDept(String startDate,String endDate) throws Exception{
+		ModelAndView  modelAndView = new ModelAndView("jsp/system/modularDept");
+		
+		/*页面展示VO 【表头】*/
+		modelAndView.addObject("modularVOHeadList",getModularTemp());
+		/*页面展示VO 【数据】*/
+		String[] dateSection = new String[]{startDate,endDate};
+		modelAndView.addObject("modularVODataList",getModularDeptData(dateSection));
+		modelAndView.addObject("startDate",startDate);
+		modelAndView.addObject("endDate",endDate);
+
+		return modelAndView;
+	}
+	
+	/**
+	 * 根据XML文件读取表头文件
+	 * @return
+	 */
+//	@Test
+	public List<ModularVO> getModularTemp(){
+		List<ModularVO> modularVOList = new ArrayList<ModularVO>();
+		ModularVO modularVO = null;
+		ModularDetailVO modularDetailVO = null;
+		try {
+			InputStream is =  this.getClass().getClassLoader().getResourceAsStream("modularTemp.xml");
+			
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();    
+			DocumentBuilder builder = factory.newDocumentBuilder();    
+			Document doc = builder.parse(is); 
+			
+			NodeList modular = doc.getElementsByTagName("modular");    
+			for (int i = 0; i < modular.getLength(); i++) {
+				Node modularNode = modular.item(i);
+				modularVO = new ModularVO();
+				
+				NodeList pagers = modularNode.getChildNodes();
+				for(int j = 0; j < pagers.getLength(); j++){
+					Node pagersNode = pagers.item(j);
+					if(pagersNode.hasChildNodes()){
+						if(pagersNode.getFirstChild().getNextSibling() == null){
+							modularVO.setModularName(pagersNode.getFirstChild().getNodeValue());
+//							System.out.println("--"+pagersNode.getFirstChild().getNodeValue());
+						}else{
+							NodeList infos = pagersNode.getChildNodes();
+							for(int k = 0 ; k < infos.getLength(); k++){
+								Node info = infos.item(k);
+								if(!info.hasChildNodes() && info.getNextSibling() != null){
+									modularDetailVO = new ModularDetailVO();
+									modularDetailVO.setPageName(info.getNextSibling().getFirstChild().getNextSibling().getFirstChild().getNodeValue());
+//									System.out.println("------"+info.getNextSibling().getFirstChild().getNextSibling().getFirstChild().getNodeValue());
+									modularVO.getModularDetailList().add(modularDetailVO);
+								}
+							}
+						}
+					}
+				}
+				modularVOList.add(modularVO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		
+		return modularVOList;
+	}
+	
+	/**
+	 * 读取模块数据
+	 * @param year
+	 * @param quarter
+	 * @return
+	 */
+	private List<ModularVO> getModularData(int year) throws Exception{
+		List<ModularVO> modularVOList = new ArrayList<ModularVO>();
+		ModularVO modularVO = null;
+		ModularDetailVO modularDetailVO = null;
+		List<ModularInfoVO> modularInfoList = null;
+		
+		/*==========================重要文库 =============================*/
+		modularVO = new ModularVO("重要文库");
+		/*重要讲话文件*/
+		modularInfoList = getFourQuarterCount(Zyjhwj.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Zyjhwj.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		
+		/*常用法律法规*/
+		modularInfoList = getFourQuarterCount(Cyflfg.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Cyflfg.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================会议文件 =============================*/
+		modularVO = new ModularVO("会议文件");
+		/*预发文件*/
+		modularInfoList = getFourQuarterCount(Hywjxx.class,year," wjsslm = 2 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "2");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*正式文件*/
+		modularInfoList = getFourQuarterCount(Hywjxx.class,year," wjsslm = 3 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "3");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*其他会议文件*/
+		modularInfoList = getFourQuarterCount(Hywjxx.class,year," wjsslm = 4 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "4");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================学习资料 =============================*/
+		modularVO = new ModularVO("学习资料");
+		/*培训资料*/
+		modularInfoList = getFourQuarterCount(com.free.xxpx.model.Document.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,com.free.xxpx.model.Document.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================议案建议 =============================*/
+		modularVO = new ModularVO("议案建议");
+		/*议案摘报*/
+		modularInfoList = getFourQuarterCount(Dbgz.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Dbgz.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================履职交流 =============================*/
+		modularVO = new ModularVO("履职交流");
+		/*履职经验成果*/
+		modularInfoList = getFourQuarterCount(Lzjycg.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Lzjycg.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*常委会审议*/
+		modularInfoList = getFourQuarterCount(Cwhsy.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Cwhsy.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================信息动态 =============================*/
+		modularVO = new ModularVO("信息动态");
+		/*市人大动态*/
+		modularInfoList = getFourQuarterCount(Rddtxx.class,year," type = 1 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "1");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*区县人大动态*/
+		modularInfoList = getFourQuarterCount(Rddtxx.class,year," type = 2 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "2");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*外省市人大动态*/
+		modularInfoList = getFourQuarterCount(Rddtxx.class,year," type = 3 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "3");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*市情信息*/
+		modularInfoList = getFourQuarterCount(Rddtxx.class,year," type = 4 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "4");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*调研成果*/
+		modularInfoList = getFourQuarterCount(Dycgjl.class,year,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Dycgjl.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		modularVOList.add(modularVO);
+		/*==========================合计=============================*/
+		modularVO = new ModularVO("总计");
+		modularVO = getModularVO(modularVOList,modularVO);
+		modularVOList.add(modularVO);
+		
+		return modularVOList;
+	}
+	
+	/**
+	 * 按部门统计模块发布记录数量【部门】
+	 * @return
+	 * @throws Exception
+	 */
+	private ModularVO getModularDeptData(String... dateSection) throws Exception{
+		ModularVO modularVO = new ModularVO();
+		ModularDetailVO modularDetailVO = null;
+		List<ModularInfoVO> modularInfoList = null;
+		
+		/*组装部门集合*/
+		Criteria c = Cnd.NEW();
+		c.getOrderBy().asc("id");
+		c.where().and("fid","<>",0);
+		
+		List<Department> deptmentList = deptService.query(c);
+		
+		for(Department dept : deptmentList){
+			modularDetailVO = new ModularDetailVO();
+			modularDetailVO.setPageName(dept.getDeptname());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		
+		
+		
+		/*==========================重要文库 =============================*/
+		/*重要讲话文件*/
+		modularInfoList = getDeptCount(Zyjhwj.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Zyjhwj.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		
+		/*常用法律法规*/
+		modularInfoList = getDeptCount(Cyflfg.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Cyflfg.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================会议文件 =============================*/
+		/*预发文件*/
+		modularInfoList = getDeptCount(Hywjxx.class,dateSection," wjsslm = 2 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "2");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*正式文件*/
+		modularInfoList = getDeptCount(Hywjxx.class,dateSection," wjsslm = 3 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "3");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*其他会议文件*/
+		modularInfoList = getDeptCount(Hywjxx.class,dateSection," wjsslm = 4 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Hywjxx.class.getName() + "4");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================学习资料 =============================*/
+		/*培训资料*/
+		modularInfoList = getDeptCount(com.free.xxpx.model.Document.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,com.free.xxpx.model.Document.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================议案建议 =============================*/
+		/*议案摘报*/
+		modularInfoList = getDeptCount(Dbgz.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Dbgz.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================履职交流 =============================*/
+		/*履职经验成果*/
+		modularInfoList = getDeptCount(Lzjycg.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Lzjycg.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*常委会审议*/
+		modularInfoList = getDeptCount(Cwhsy.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Cwhsy.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================信息动态 =============================*/
+		/*市人大动态*/
+		modularInfoList = getDeptCount(Rddtxx.class,dateSection," type = 1 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "1");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*区县人大动态*/
+		modularInfoList = getDeptCount(Rddtxx.class,dateSection," type = 2 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "2");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*外省市人大动态*/
+		modularInfoList = getDeptCount(Rddtxx.class,dateSection," type = 3 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "3");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*市情信息*/
+		modularInfoList = getDeptCount(Rddtxx.class,dateSection," type = 4 ");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Rddtxx.class.getName() + "4");
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*调研成果*/
+		modularInfoList = getDeptCount(Dycgjl.class,dateSection,"");
+		if(modularInfoList != null){
+			modularDetailVO = getModularDetailVO(modularInfoList,Dycgjl.class.getName());
+			modularVO.getModularDetailList().add(modularDetailVO);
+		}
+		/*==========================合计=============================*/
+
+		return modularVO;
+	}
+	
+	/**
+	 * 获取四季数据
+	 * @param service
+	 * @param T
+	 * @return
+	 */
+	private List<ModularInfoVO> getFourQuarterCount(Class<?> T , int year , String param){
+		List<ModularInfoVO> modularInfoVOList = new ArrayList<ModularInfoVO>();
+		ModularInfoVO modularInfoVO = null;
+		
+		/*循环四个季度*/
+		for(int i = 1;i <= 4;i++){
+			modularInfoVO = new ModularInfoVO();
+			String[] dateString = getDateString(i,year);
+			int count = modularService.count(T, param , dateString);
+			modularInfoVO.setCount(count);
+			modularInfoVO.setQuarter(i);
+			/*获取四季对照*/
+			Map<Integer,String> quarterMap = getQuarter();
+			modularInfoVO.setQuarterName(quarterMap.get(i));
+			
+			modularInfoVOList.add(modularInfoVO);
+		}
+		return modularInfoVOList;
+	}
+	
+	/**
+	 * 查询部门统计数量【部门】
+	 * @param T
+	 * @param dateSection
+	 * @param param
+	 * @return
+	 */
+	private List<ModularInfoVO> getDeptCount(Class<?> T , String[] dateSection , String param){
+		List<ModularInfoVO> modularInfoVOList = new ArrayList<ModularInfoVO>();
+		ModularInfoVO modularInfoVO = new ModularInfoVO();
+		int count = modularService.countDept(T, param, dateSection);
+		modularInfoVO.setCount(count);
+		
+		return modularInfoVOList;
+	}
+	
+	/**
+	 * 加载二级目录
+	 * @param modularInfoList
+	 * @param pageName
+	 * @return
+	 */
+	private ModularDetailVO getModularDetailVO(List<ModularInfoVO> modularInfoList,String pageName){
+		ModularDetailVO modularDetailVO = new ModularDetailVO();
+		modularDetailVO.setModularInfoList(modularInfoList);
+		modularDetailVO.setPageName(pageName);
+		/*此二年级目录各季度求和*/
+		Integer totalCount = 0;
+		for(ModularInfoVO info : modularInfoList){
+			totalCount += info.getCount();
+		}
+		modularDetailVO.setTotalCount(totalCount);
+		return modularDetailVO;
+	}
+	
+	/**
+	 * 获取四季查询条件
+	 * @param quarter
+	 * @param year
+	 * @return
+	 */
+	private String[] getDateString(Integer quarter,int year){
+		/*季度时间区间条件*/
+		String[] dateString  = new String[2];
+		switch (quarter) {
+		case 1 : dateString[0] = year + "-01-01";dateString[1] = year + "-03-31" ; break;
+		case 2 : dateString[0] = year + "-04-01";dateString[1] = year + "-06-31" ; break;
+		case 3 : dateString[0] = year + "-07-01";dateString[1] = year + "-09-31" ; break;
+		case 4 : dateString[0] = year + "-10-01";dateString[1] = year + "-12-31" ; break;
+		default :
+			dateString[0] = year + "-01-01";dateString[1] = year + "-12-31";
+			break;
+		}
+		return dateString;
+	}
+	
+	/**
+	 * 计算统计合计
+	 * @param modularVOList
+	 * @param modularVO
+	 */
+	private ModularVO getModularVO(List<ModularVO> modularVOList,ModularVO modularVO){
+		int quarterOne = 0,quarterTwo = 0,quarterThree = 0,quarterFour = 0;
+		for(ModularVO mvo : modularVOList){
+			for(ModularDetailVO mdvo : mvo.getModularDetailList()){
+				for(ModularInfoVO mivo : mdvo.getModularInfoList()){
+					if(mivo.getQuarter() == 1){
+						quarterOne += mivo.getCount();
+					}else if(mivo.getQuarter() == 2){
+						quarterTwo += mivo.getCount();
+					}else if(mivo.getQuarter() == 3){
+						quarterThree += mivo.getCount();
+					}else if(mivo.getQuarter() == 4){
+						quarterFour += mivo.getCount();
+					}
+				}
+			}
+		}
+		
+		/*获取四季对照*/
+		Map<Integer,String> quarterMap = getQuarter();
+		/*二级详细*/
+		ModularDetailVO modularDetail = new ModularDetailVO();
+		modularDetail.setTotalCount(quarterOne + quarterTwo + quarterThree + quarterFour);
+		
+		ModularInfoVO modularInof = new ModularInfoVO();
+		modularInof.setCount(quarterOne);
+		modularInof.setQuarter(1);
+		modularInof.setQuarterName(quarterMap.get(1));
+		modularDetail.getModularInfoList().add(modularInof);
+		
+		modularInof = new ModularInfoVO();
+		modularInof.setCount(quarterTwo);
+		modularInof.setQuarter(2);
+		modularInof.setQuarterName(quarterMap.get(2));
+		modularDetail.getModularInfoList().add(modularInof);
+		
+		modularInof = new ModularInfoVO();
+		modularInof.setCount(quarterThree);
+		modularInof.setQuarter(3);
+		modularInof.setQuarterName(quarterMap.get(3));
+		modularDetail.getModularInfoList().add(modularInof);
+		
+		modularInof = new ModularInfoVO();
+		modularInof.setCount(quarterFour);
+		modularInof.setQuarter(4);
+		modularInof.setQuarterName(quarterMap.get(4));
+		modularDetail.getModularInfoList().add(modularInof);
+		
+		modularVO.getModularDetailList().add(modularDetail);
+		return modularVO;
+	}
+	
+	/**
+	 * 季度Map
+	 * @return
+	 */
+	private Map<Integer,String> getQuarter(){
+		Map<Integer,String> quarterMap = new HashMap<Integer,String>();
+		quarterMap.put(1, "一季度");
+		quarterMap.put(2, "二季度");
+		quarterMap.put(3, "三季度");
+		quarterMap.put(4, "四季度");
+		return quarterMap;
+				
+	}
+}
+ 

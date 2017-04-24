@@ -1,0 +1,7 @@
+body{padding:0px;margin:0px;}
+#roll_top,#fall,#ct{position:relative;cursor:pointer;height:40px;width:15px;}
+#roll_top{background:url(../images/roll.png) no-repeat;}
+#fall{background:url(../images/roll.png) no-repeat 0 -80px;}
+#ct{background:url(../images/roll.png) no-repeat 0 -40px;}
+#roll{display:block;width:15px;margin-right:-508px;position:fixed;right:50%;top:50%;_margin-right:-507px;_position:absolute;_margin-top:300px;_top:expression(eval(document.documentElement.scrollTop));}
+/*代码整理：www.97zzw.com - 97站长网*/

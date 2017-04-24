@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee [url]http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd[/url]" version="2.0">
+    <tlib-version>1.0</tlib-version>
+<short-name>elf</short-name>
+
+<function>
+       <description>得到代码名称</description>
+       <name>getCodeName</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getCodeName(java.lang.String,java.lang.String)</function-signature>
+       <example>${elf:getCodeName(code,section)}</example>
+</function>
+<function>
+       <description>得到代码名称s</description>
+       <name>getCodes</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getCodes(java.lang.String)</function-signature>
+       <example>${elf:getCodes(section)}</example>
+</function>
+<function>
+       <description>得到刊物名称s</description>
+       <name>getMagazines</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getMagazines()</function-signature>
+       <example>${getMagazines()}</example>
+</function>
+<function>
+       <description>得到当前日期</description>
+       <name>getDate</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getDate()</function-signature>
+       <example>${getDate()}</example>
+</function>
+<function>
+       <description>得到会议文件中最新的届次、会次，返回Map</description>
+       <name>getLatestJcAndHc</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getLatestJcAndHc(java.lang.String)</function-signature>
+       <example>${getLatestJcAndHc(wjsslm)}</example>
+</function>
+<function>
+       <description>得到议案建议中最新的届次、会次，返回Map</description>
+       <name>getLatestYajyJcHc</name>
+       <function-class>com.free.common.tag.ELFuncUtil</function-class>
+       <function-signature>java.lang.String getLatestYajyJcHc(java.lang.String)</function-signature>
+       <example>${getLatestYajyJcHc(type)}</example>
+</function>
+</taglib>

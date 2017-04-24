@@ -1,0 +1,21 @@
+#popupMask {
+	DISPLAY: none; Z-INDEX: 10000; BACKGROUND: #333; FILTER: alpha(opacity=0); LEFT: 0px; WIDTH: 100%; POSITION: absolute; TOP: 0px; HEIGHT: 100%; opacity: .0
+}
+#popupContainer {
+	PADDING-RIGHT: 0px; DISPLAY: none; PADDING-LEFT: 0px; Z-INDEX: 10001; LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; POSITION: absolute; TOP: 0px
+}
+#popupInner {
+	BORDER-RIGHT: #fff 0px solid; BORDER-TOP: #fff 0px solid; BACKGROUND: #eee; BORDER-LEFT: #fff 0px solid; BORDER-BOTTOM: #fff 0px solid
+}
+#popupFrame {
+	Z-INDEX: 10002; MARGIN: 0px; WIDTH: 100%; POSITION: relative; HEIGHT: 100%
+}
+#popupTitleBar {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 6px; FONT-WEIGHT: bold; FONT-SIZE: 12px; Z-INDEX: 10003; BACKGROUND: #CCCCCC; PADDING-BOTTOM: 4px; COLOR: #fff; PADDING-TOP: 5px; POSITION: relative; HEIGHT: 1.3em
+}
+#popupTitle {
+	FLOAT: left
+}
+#popupControls {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: right; PADDING-BOTTOM: 0px; CURSOR: hand; PADDING-TOP: 0px
+}

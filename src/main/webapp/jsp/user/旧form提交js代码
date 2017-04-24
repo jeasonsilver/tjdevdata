@@ -1,0 +1,35 @@
+$("#Button1").click(function(){
+	$("#inputForm input").each(function(i,o){
+		// 目前replace没写好，只直接一个对象的json required,如果maxlength写在input上
+		if ($(o).attr("validate")){
+			var s =$(o).attr('validate');
+			s =s.replace("{","{\"");
+			s =s.replace(",",",\"");
+			s =s.replace(":","\":");
+			var v =  $.parseJSON(s);
+			if(v.required){
+				if ($(o).val()==""){
+					msg+=$(o).attr('id')+"不能为空";
+				}
+			}
+		}
+	});
+	
+	if (msg!=""){
+		alert(msg);
+		msg="";
+		return false;//防止submit提交
+	}
+	$.ajax({
+	   type: "POST",
+	   url: "${ctx}/user/save.do",
+	   data: $("#inputForm").serialize(),
+	   success: function(data){
+     	if(data=='ok'){
+     		alert("保存成功");
+     		closeDialog()
+     	}
+	   }
+	});
+	return false;//防止submit提交
+});
